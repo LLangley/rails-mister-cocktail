@@ -1,6 +1,32 @@
 <h1><%= @cocktail.name %></h1>
 
+      <ul>
+        <% @cocktail.doses.each do |dose| %>
+          <li>
+            <%= dose.description %>
+            of
+            <%= dose.ingredient.name.capitalize %>
 
+            (<%= link_to "Delete", dose_path(dose), method: :delete %>)
+          </li>
+        <% end %>
+      </ul>
+
+
+
+      <%= link_to 'Back', cocktails_path %>
+
+
+
+    <h2>Add an ingredient</h2>
+      <%= simple_form_for([ @cocktail, @dose ]) do |f| %>
+        <%= f.input :description %>
+        <%= f.input :ingredient,
+              collection: Ingredient.order(:name),
+              prompt: "Please choose..."
+         %>
+        <%= f.submit 'Add ingredient', class: 'btn btn-primary'  %>
+    <% end %>
 
 
 

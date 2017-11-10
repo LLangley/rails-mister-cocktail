@@ -1,15 +1,18 @@
 
+<!-- VIEW displays the model data, and sends user INPUTS/ACTIONS (e.g. button clicks) to the CONTROLLER. -->
+
+
  <h1>Cocktails</h1>
 
-<ul>
+  <%= link_to "Create cocktail" new_cocktail_path, class     "btn btn-primary" %>
 
-<%= @Cocktails.each do |cocktail| %>
-<li> <%= link_to cocktail.name, cocktails_path %> </li>
+  <%= @Cocktails.each do |cocktail| %>
+  <li> <%= link_to cocktail.name, cocktails_path %> </li>
+  <% end %>
 
-<% end %>
+<%= link_to cocktail.name, cocktail_path(cocktail) %>
 
-</ul>
 
-<%= link_to "Create cocktail" new_cocktail_path, class "btn btn-primary" %>
+
 
 
